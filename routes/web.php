@@ -14,6 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('hello',function(){
-    return '<html><body><h1>Hello</h1><p>This is simple page. </p></body></html>';
+
+Route::get('hello/{msg}/{pass?}',function ($msg,$pass='no message.') {
+
+$html = <<<EOF
+<html>
+<head>
+<title>Hello</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <p>This is sample page.</p>
+    <p>${msg}</p>
+    <p>${pass}</p>
+</body>
+</html>
+EOF;
+
+    return $html;
 });
